@@ -12,48 +12,48 @@ size_t	ft_strlen(const char*s)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	counter;
+	size_t	s1_len;
+	size_t	s2_len;
 	char	*strjoin;
 
-	counter = 0;
+	s1_len = 0;
+	s2_len = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	strjoin = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	strjoin = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (strjoin == NULL)
 		return (NULL);
-	while (*s1 != '\0')
+	while (s1[s1_len])
 	{
-		strjoin[counter] = *s1;
-		s1++;
-		counter++;
+		strjoin[s1_len] = s1[s1_len];
+		s1_len++;
 	}
-	while (*s2 != '\0')
+	while (s2[s2_len])
 	{
-		strjoin[counter] = *s2;
-		s2++;
-		counter++;
+		strjoin[s1_len] = s2[s2_len];
+		s1_len++;
+		s2_len++;
 	}
-	strjoin[counter] = '\0';
+	strjoin[s1_len] = '\0';
 	return (strjoin);
 }
 
 char	*ft_strdup(const char *s1)
 {
-	void	*dst;
+	char	*aux;
 	size_t	counter;
 	size_t	s1_size;
 
-	s1_size = ft_strlen(s1) + 1;
-	dst = (char *)malloc(s1_size);
+	s1_size = ft_strlen(s1);
+	aux = malloc(s1_size + 1);
 	counter = 0;
-	if (dst == NULL)
-		return (NULL);
-	while (counter < s1_size)
+	while (s1[counter])
 	{
-		((unsigned char *)dst)[counter] = ((unsigned char *)s1)[counter];
+		((unsigned char *)aux)[counter] = ((unsigned char *)s1)[counter];
 		counter++;
 	}
-	return (dst);
+	((unsigned char *)aux)[counter] = '\0';
+	return (aux);
 }
 
 size_t	ft_linelen(const char *s)
@@ -77,7 +77,7 @@ char	*ft_linedup(const char *s1)
 	size_t	s1_size;
 
 	s1_size = ft_linelen(s1);
-	dst = (char *)malloc(s1_size + 1);
+	dst = (char *)malloc((s1_size + 1) * sizeof(char));
 	counter = 0;
 	if (dst == NULL)
 		return (NULL);

@@ -38,12 +38,18 @@ static int	found_line(char *read_content)
 
 static void	ft_cpy_content(char **read_content, char *buffer)
 {
+	char	*aux;
+
 	if (!*read_content && !buffer)
 		return ;
 	else if (!*read_content && buffer)
 		*read_content = ft_strdup(buffer);
 	else
-		*read_content = ft_strjoin(*read_content, buffer);
+	{
+		aux = ft_strjoin(*read_content, buffer);
+		free(*read_content);
+		*read_content = aux;
+	}
 	return ;
 }
 
