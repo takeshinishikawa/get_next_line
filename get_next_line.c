@@ -56,8 +56,12 @@ int	get_next_line(int fd, char **line)
 	char		*buffer;
 
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (buffer == NULL || line == NULL || fd == -1 || BUFFER_SIZE <= 0)
+	if (buffer == NULL || line == NULL || fd < 0 || BUFFER_SIZE <= 0)
+	{
+		free(buffer);
+		*line = NULL;
 		return (-1);
+	}
 	char_read = 1;
 	while (char_read > 0 && found_line(read_content) == 0)
 	{
