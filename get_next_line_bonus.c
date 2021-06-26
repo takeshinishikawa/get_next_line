@@ -59,7 +59,7 @@ int	get_next_line(int fd, char **line)
 	int			char_read;
 	char		*buffer;
 
-	if (line == NULL || fd < 0 || BUFFER_SIZE <= 0)
+	if (line == NULL || fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (-1);
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	char_read = 1;
