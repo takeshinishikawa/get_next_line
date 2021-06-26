@@ -5,9 +5,7 @@ int	ft_transfer_line(char **read_content, char **line)
 	size_t	i;
 	char	*aux;
 
-	i = 0;
-	while ((*read_content)[i] != '\n' && (*read_content)[i] != '\0')
-		i++;
+	i = ft_linelen(*read_content);
 	if ((*read_content)[i] == '\0')
 	{
 		*line = ft_strdup(*read_content);
