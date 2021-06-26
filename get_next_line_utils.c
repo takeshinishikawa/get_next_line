@@ -56,7 +56,7 @@ char	*ft_strdup(const char *s1)
 	return (dst);
 }
 
-size_t	ft_linelen(const char*s)
+size_t	ft_linelen(const char *s)
 {
 	size_t	i;
 
