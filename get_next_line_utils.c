@@ -77,7 +77,7 @@ char	*ft_linedup(const char *s1)
 	size_t	s1_size;
 
 	s1_size = ft_linelen(s1);
-	dst = (char *)malloc(s1_size);
+	dst = (char *)malloc(s1_size + 1);
 	counter = 0;
 	if (dst == NULL)
 		return (NULL);
