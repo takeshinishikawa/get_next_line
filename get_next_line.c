@@ -62,11 +62,14 @@ int	get_next_line(int fd, char **line)
 	while (char_read > 0 && found_line(read_content) == 0)
 	{
 		char_read = read(fd, buffer, BUFFER_SIZE);
+		if (char_read == -1)
+		{
+			free(buffer);
+			return (-1);
+		}
 		buffer[char_read] = '\0';
 		ft_cpy_content(&read_content, buffer);
 	}
 	free(buffer);
-	if (char_read == -1)
-		return (-1);
 	return (ft_transfer_line(&read_content, line));
 }
