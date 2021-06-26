@@ -61,8 +61,12 @@ size_t	ft_linelen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (s[i] != '\n')
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			return (i);
 		i++;
+	}
 	return (i);
 }
 
