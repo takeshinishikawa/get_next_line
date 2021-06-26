@@ -29,9 +29,9 @@ static int	found_line(char *read_content)
 	i = 0;
 	if (read_content == NULL)
 		return (0);
-	while ((*read_content) + i)
+	while (read_content[i])
 	{
-		if ((*read_content) + i == '\n')
+		if (read_content[i] == '\n')
 			return (1);
 		i++;
 	}
