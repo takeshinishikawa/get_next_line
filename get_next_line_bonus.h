@@ -3,7 +3,6 @@
 # include <unistd.h> 
 # include <stdlib.h>
 # include <stddef.h>
-# include <fcntl.h>
 # define OPEN_MAX 1024
 
 size_t	ft_strlen(const char*s);
